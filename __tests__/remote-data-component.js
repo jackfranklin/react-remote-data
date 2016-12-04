@@ -12,8 +12,8 @@ describe('rendering the right child component', () => {
       <RemoteData url='http://test.com/jack'
         notAsked={props => <p>Not Asked</p>}
         pending={props => <p>Pending</p>}
-        success={props => <p>Success! {props.data}</p>}
-        failure={props => <p>Failure! {props.data}</p>}
+        success={props => <p>Success! {props.request.data}</p>}
+        failure={props => <p>Failure! {props.request.data}</p>}
       />
     );
 

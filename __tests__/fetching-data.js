@@ -31,8 +31,8 @@ describe('fetching data via the fetch function', () => {
           </div>
         )}
         pending={props => <p>Pending</p>}
-        success={props => <p>Success! {props.data.name}</p>}
-        failure={props => <p>Failure! {props.data.message}</p>}
+        success={props => <p>Success! {props.request.data.name}</p>}
+        failure={props => <p>Failure! {props.request.data.message}</p>}
       />
     );
   });

@@ -30,7 +30,7 @@ class RemoteData extends React.Component {
   propsForChildStates(state) {
     return Object.assign({}, this.props, {
       fetch: (...args) => this.fetch(...args),
-      data: FINAL_STATES.indexOf(state) > -1 ? this.state.remoteData.data : undefined,
+      request: this.state.remoteData,
     });
   }
 
