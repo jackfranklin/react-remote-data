@@ -23,6 +23,10 @@ class RemoteData extends React.Component {
     return this.state.remoteData.fetch(...args);
   }
 
+  remoteDataChange(remoteData) {
+    this.setState({ remoteData })
+  }
+
   propsForChildStates(state) {
     return Object.assign({}, this.props, {
       fetch: (...args) => this.fetch(...args),
