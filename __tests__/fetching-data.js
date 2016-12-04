@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import RemoteData from '../src/index';
+import nock from 'nock'
 
 import { PENDING, SUCCESS, FAILURE } from 'remote-data-js/lib/states';
 
@@ -24,8 +25,12 @@ describe('fetching data via the fetch function', () => {
   });
 
   test('it renders not asked with a fetch prop', () => {
-    console.log('got wrapper', wrapper)
     expect(wrapper.find('button').text()).toEqual('Fetch');
     expect(wrapper.find('button').props().onClick).toBeTruthy();
   });
+
+  test('clicking on the button moves the state to pending', () => {
+    throw Error('TODO')
+
+  })
 });
