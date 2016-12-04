@@ -1,5 +1,13 @@
 import React from 'react';
 import RemoteDataJs from 'remote-data-js';
+import {
+  SUCCESS,
+  FAILURE,
+  NOT_ASKED,
+  PENDING,
+} from 'remote-data-js/lib/states';
+
+const FINAL_STATES = [ SUCCESS, FAILURE ]
 
 class RemoteData extends React.Component {
   componentWillMount() {
@@ -15,18 +23,19 @@ class RemoteData extends React.Component {
     return this.state.remoteData.fetch(...args);
   }
 
-  responseProps() {
+  propsForChildStates(state) {
     return Object.assign({}, this.props, {
-      data: this.state.remoteData.data
+      fetch: (...args) => this.fetch(...args),
+      data: FINAL_STATES.indexOf(state) > -1 ? this.state.remoteData.data : undefined,
     });
   }
 
   render() {
     return this.state.remoteData.case({
-      NotAsked: () => this.props.notAsked(),
-      Pending: () => this.props.pending(),
-      Success: () => this.props.success(this.responseProps()),
-      Failure: () => this.props.failure(this.responseProps()),
+      NotAsked: () => this.props.notAsked(this.propsForChildStates(NOT_ASKED)),
+      Pending: () => this.props.pending(this.propsForChildStates(PENDING)),
+      Success: () => this.props.success(this.propsForChildStates(SUCCESS)),
+      Failure: () => this.props.failure(this.propsForChildStates(FAILURE)),
     });
   }
 }
