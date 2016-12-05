@@ -30,6 +30,6 @@ Render a `RemoteData` component and pass it the following props:
 When `notAsked`, `pending`, `success` and `failure` are rendered, the function you provide is called with some props. They are:
 
 - `fetch: Function` call `props.fetch(...args)` to start the request. This immediately turns the request to `pending`, and it will update to `success` or `failure` depending on the outcome of the request.
-- `request: RemoteDataJs` this is the underlying instance of the [RemoteDataJs](https://github.com/jackfranklin/remote-data-js) object that this component wraps around.
+- `request: RemoteDataJs` this is the underlying instance of the [RemoteDataJs](https://github.com/jackfranklin/remote-data-js) object that this component wraps around. The bit you'll most likely be interested in is `request.data`, which contains the API response for a successful request, or an `Error` for a failed request.
 
 
