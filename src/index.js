@@ -1,5 +1,6 @@
 import React from 'react';
 import RemoteDataJs from 'remote-data-js';
+// TODO: just destructure these from the main import
 import {
   SUCCESS,
   FAILURE,
