@@ -6,6 +6,8 @@ A React component around [remote-data-js](https://github.com/jackfranklin/remote
 npm install --save react-remote-data-js
 ```
 
+There is also a build that will put this library in the global scope as `window.ReactRemoteData`. I recommend only using this for testing purposes - bundling via Browserify/Webpack/Rollup/etc is much better for proper application development.
+
 ## Usage
 
 ```jsx
@@ -18,6 +20,8 @@ import RemoteData from 'react-remote-data-js'
   failure={props => <div><ApiErrorComponent error={props.request.data} /></div>}
 />
 ```
+
+[You can also see an example on JSBin](http://jsbin.com/hucafupilo/edit?js,output) and get code running immediately.
 
 Render a `RemoteData` component and pass it the following props:
 
