@@ -1,15 +1,14 @@
-import React from 'react';
-import RemoteDataJs from 'remote-data-js';
+/* global module */
+import { Component, PropTypes } from 'react'
+import RemoteDataJs from 'remote-data-js'
 import {
   SUCCESS,
   FAILURE,
   NOT_ASKED,
   PENDING,
-} from 'remote-data-js/lib/states';
+} from 'remote-data-js/lib/states'
 
-const FINAL_STATES = [ SUCCESS, FAILURE ]
-
-class RemoteData extends React.Component {
+class RemoteData extends Component {
   componentWillMount() {
     this.setState({
       remoteData: new RemoteDataJs({
@@ -20,7 +19,7 @@ class RemoteData extends React.Component {
   }
 
   fetch(...args) {
-    return this.state.remoteData.fetch(...args);
+    return this.state.remoteData.fetch(...args)
   }
 
   remoteDataChange(remoteData) {
@@ -31,7 +30,7 @@ class RemoteData extends React.Component {
     return Object.assign({}, this.props, {
       fetch: (...args) => this.fetch(...args),
       request: this.state.remoteData,
-    });
+    })
   }
 
   render() {
@@ -40,8 +39,16 @@ class RemoteData extends React.Component {
       Pending: () => this.props.pending(this.propsForChildStates(PENDING)),
       Success: () => this.props.success(this.propsForChildStates(SUCCESS)),
       Failure: () => this.props.failure(this.propsForChildStates(FAILURE)),
-    });
+    })
   }
 }
 
-module.exports = RemoteData;
+RemoteData.propTypes = {
+  url: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
+  notAsked: PropTypes.func.isRequired,
+  pending: PropTypes.func.isRequired,
+  success: PropTypes.func.isRequired,
+  failure: PropTypes.func.isRequired,
+}
+
+module.exports = RemoteData
