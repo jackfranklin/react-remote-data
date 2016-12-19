@@ -44,4 +44,4 @@ class RemoteData extends React.Component {
   }
 }
 
-export default RemoteData;
+module.exports = RemoteData;
