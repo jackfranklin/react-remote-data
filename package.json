@@ -4,8 +4,9 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint src __tests__",
     "test": "jest",
+    "test:watch": "npm run test -- --watch",
     "ci": "npm run lint && npm run test",
     "build": "npm run build-cjs && npm run build-umd",
     "build-cjs": "babel src -d lib",
@@ -14,6 +15,10 @@
   },
   "keywords": [
     "react"
+  ],
+  "files": [
+    "lib",
+    "package.json"
   ],
   "author": "Jack Franklin",
   "license": "MIT",
@@ -28,6 +33,8 @@
     "babel-jest": "16.0.0",
     "babel-loader": "6.2.10",
     "babel-plugin-external-helpers": "6.18.0",
+    "babel-plugin-transform-class-properties": "6.23.0",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
     "babel-preset-es2015": "6.18.0",
     "babel-preset-react": "6.16.0",
     "enzyme": "2.4.1",

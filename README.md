@@ -51,6 +51,20 @@ Often you'll want to take a piece of data and use it to construct a URL. For exa
 />
 ```
 
+## Abstracting
+
+You might have a common `<Loading>` component that you want to always use. In that case I recommend a simple wrapper component around `<RemoteData>` like so:
+
+```jsx
+import Loading from './components/loading'
+
+const MyRemoteData = props => (
+  <RemoteData pending={() => <Loading />} {...props} />
+)
+```
+
+You can do this with any of the properties that `<RemoteData>` expects.
+
 ## Questions, problems, comments?
 
 Would love to hear them! Please raise an issue on this repository.

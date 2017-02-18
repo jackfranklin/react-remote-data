@@ -9,6 +9,14 @@ import {
 } from 'remote-data-js/lib/states'
 
 class RemoteData extends Component {
+  static propTypes = {
+    url: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
+    notAsked: PropTypes.func.isRequired,
+    pending: PropTypes.func.isRequired,
+    success: PropTypes.func.isRequired,
+    failure: PropTypes.func.isRequired,
+  }
+
   componentWillMount() {
     this.setState({
       remoteData: new RemoteDataJs({
@@ -27,10 +35,11 @@ class RemoteData extends Component {
   }
 
   propsForChildStates(state) {
-    return Object.assign({}, this.props, {
+    return {
+      ...this.props,
       fetch: (...args) => this.fetch(...args),
       request: this.state.remoteData,
-    })
+    }
   }
 
   render() {
@@ -41,14 +50,6 @@ class RemoteData extends Component {
       Failure: () => this.props.failure(this.propsForChildStates(FAILURE)),
     })
   }
-}
-
-RemoteData.propTypes = {
-  url: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
-  notAsked: PropTypes.func.isRequired,
-  pending: PropTypes.func.isRequired,
-  success: PropTypes.func.isRequired,
-  failure: PropTypes.func.isRequired,
 }
 
 module.exports = RemoteData

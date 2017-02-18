@@ -1,10 +1,10 @@
-import React from 'react';
-import 'isomorphic-fetch';
-import { mount } from 'enzyme';
-import RemoteData from '../src/index';
+import React from 'react'
+import 'isomorphic-fetch'
+import { mount } from 'enzyme'
+import RemoteData from '../src/index'
 import nock from 'nock'
 
-import { PENDING, SUCCESS, FAILURE } from 'remote-data-js/lib/states';
+import { PENDING, SUCCESS, FAILURE } from 'remote-data-js/lib/states'
 
 function asyncTest(fn, timeout = 10) {
   return new Promise((resolve, reject) => {
@@ -12,7 +12,7 @@ function asyncTest(fn, timeout = 10) {
       try {
         fn()
         resolve()
-      } catch(e) {
+      } catch (e) {
         reject(e)
       }
     }, timeout)
@@ -20,7 +20,7 @@ function asyncTest(fn, timeout = 10) {
 }
 
 describe('fetching data via the fetch function', () => {
-  let wrapper;
+  let wrapper
 
   beforeEach(() => {
     wrapper = mount(
@@ -34,16 +34,16 @@ describe('fetching data via the fetch function', () => {
         success={props => <p>Success! {props.request.data.name}</p>}
         failure={props => <p>Failure! {props.request.data.message}</p>}
       />
-    );
-  });
+    )
+  })
 
   test('it renders not asked with a fetch prop', () => {
-    expect(wrapper.find('button').text()).toEqual('Fetch');
-    expect(wrapper.find('button').props().onClick).toBeTruthy();
-  });
+    expect(wrapper.find('button').text()).toEqual('Fetch')
+    expect(wrapper.find('button').props().onClick).toBeTruthy()
+  })
 
   test('clicking on the button moves the state to pending and makes the request', () => {
-    const mock = nock('http://test.com').get('/jack').reply(200, { name: 'Jack' })
+    nock('http://test.com').get('/jack').reply(200, { name: 'Jack' })
     wrapper.find('button').simulate('click')
     expect(wrapper.state().remoteData.state).toEqual(PENDING)
     return asyncTest(() => {
@@ -53,7 +53,7 @@ describe('fetching data via the fetch function', () => {
   })
 
   test('when it fails it goes to the failure case', () => {
-    const mock = nock('http://test.com').get('/jack').reply(404)
+    nock('http://test.com').get('/jack').reply(404)
     wrapper.find('button').simulate('click')
     expect(wrapper.state().remoteData.state).toEqual(PENDING)
     return asyncTest(() => {
@@ -61,4 +61,4 @@ describe('fetching data via the fetch function', () => {
       expect(wrapper.find('p').text()).toEqual('Failure! Not Found')
     })
   })
-});
+})
