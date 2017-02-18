@@ -1,14 +1,15 @@
-var path = require('path');
-var webpack = require('webpack');
+/* global module, process */
+let path = require('path')
+let webpack = require('webpack')
 
-var uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
+let uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
   compress: { warnings: false },
-});
+})
 
 module.exports = [
   configForEnvironment('development'),
   configForEnvironment('production', '.min', [uglifyPlugin]),
-];
+]
 
 function configForEnvironment(env, suffix = '', extraPlugins = []) {
   return {
@@ -31,5 +32,5 @@ function configForEnvironment(env, suffix = '', extraPlugins = []) {
         'process.env.NODE_ENV': JSON.stringify(env),
       }),
     ].concat(extraPlugins),
-  };
+  }
 }
