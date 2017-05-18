@@ -36,7 +36,7 @@
     "babel-loader": "6.3.2",
     "babel-plugin-transform-class-properties": "6.23.0",
     "babel-plugin-transform-object-rest-spread": "6.23.0",
-    "babel-preset-es2015": "6.22",
+    "babel-preset-es2015": "6.24",
     "babel-preset-react": "6.23",
     "enzyme": "2.7.1",
     "eslint": "3.15",
