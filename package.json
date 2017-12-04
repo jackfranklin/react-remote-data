@@ -43,7 +43,7 @@
     "eslint-plugin-react": "6.10",
     "isomorphic-fetch": "2.2.1",
     "jest": "18.1.0",
-    "nock": "9.0.6",
+    "nock": "9.1.4",
     "react": "15.4.2",
     "react-addons-test-utils": "15.4.2",
     "react-dom": "15.4.2",
