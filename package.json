@@ -23,7 +23,7 @@
   "author": "Jack Franklin",
   "license": "MIT",
   "dependencies": {
-    "remote-data-js": "0.2.1"
+    "remote-data-js": "0.3.0"
   },
   "peerDependencies": {
     "react": "^15.0.0"

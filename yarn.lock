@@ -3432,9 +3432,9 @@ regjsparser@^0.1.4:
   dependencies:
     jsesc "~0.5.0"
 
-remote-data-js@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/remote-data-js/-/remote-data-js-0.2.1.tgz#d1d266a24a4bd69802edfcac729632f0e52f695d"
+remote-data-js@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/remote-data-js/-/remote-data-js-0.3.0.tgz#e9b26978fa6b38509656fc1a9a85f95da916a89f"
 
 repeat-element@^1.1.2:
   version "1.1.2"
