@@ -32,7 +32,7 @@
     "babel-cli": "6.23.0",
     "babel-core": "6.23.1",
     "babel-eslint": "7.1.1",
-    "babel-jest": "18.0.0",
+    "babel-jest": "22.2.0",
     "babel-loader": "6.3.2",
     "babel-plugin-transform-class-properties": "6.23.0",
     "babel-plugin-transform-object-rest-spread": "6.23.0",
