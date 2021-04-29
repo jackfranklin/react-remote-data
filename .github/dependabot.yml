@@ -1,0 +1,28 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint-plugin-react
+    versions:
+    - 7.22.0
+    - 7.23.1
+  - dependency-name: nock
+    versions:
+    - 13.0.10
+    - 13.0.6
+    - 13.0.7
+    - 13.0.8
+    - 13.0.9
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: handlebars
+    versions:
+    - 4.7.6
